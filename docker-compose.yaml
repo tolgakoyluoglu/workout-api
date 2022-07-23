@@ -11,3 +11,4 @@ services:
     image: 'redis:alpine3.10'
     volumes:
       - '/var/app/current/redis-volume:/var/lib/redis/data'
+    mem_limit: '128M'
