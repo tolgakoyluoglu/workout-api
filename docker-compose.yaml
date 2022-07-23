@@ -2,11 +2,13 @@ version: '3'
 services:
   node-app:
     image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:staging-latest'
+    links:
+      - 'redis'
     ports:
       - 80:80
-    deploy:
-      resources:
-        limits:
-          memory: 300m
-        reservations:
-          memory: 100m
+    mem_limit: 512m
+  redis:
+    image: 'redis:alpine3.10'
+    volumes:
+      - '/var/app/current/redis-volume:/var/lib/redis/data'
+    mem_limit: 128m
