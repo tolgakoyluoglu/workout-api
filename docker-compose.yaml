@@ -1,6 +1,6 @@
 version: '2.4'
 services:
-  node-app:
+  workout-api:
     image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:staging-latest'
     links:
       - 'redis'
@@ -11,4 +11,4 @@ services:
     image: 'redis:alpine3.10'
     volumes:
       - '/var/app/current/redis-volume:/var/lib/redis/data'
-    mem_limit: 128m
+    mem_limit: 512m

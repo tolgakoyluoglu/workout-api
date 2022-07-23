@@ -11,4 +11,4 @@ COPY . .
 EXPOSE 4000
 CMD ["npm", "start"]
 
-ENV NODE_OPTIONS=--max_old_space_size=2048
+ENV NODE_OPTIONS=--max_old_space_size=1024
