@@ -4,4 +4,9 @@ services:
     image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:staging-latest'
     ports:
       - 80:80
-    mem_limit: '250M'
+    deploy:
+      resources:
+        limits:
+          memory: 300m
+        reservations:
+          memory: 100m
