@@ -6,14 +6,7 @@ services:
       - 'redis'
     ports:
       - 80:80
-    deploy:
-      resources:
-        limits:
-          cpus: '0.001'
-          memory: 50M
-        reservations:
-          cpus: '0.0001'
-          memory: 20M
+    mem_limit: '250M'
   redis:
     image: 'redis:alpine3.10'
     volumes:
