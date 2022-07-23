@@ -1,7 +1,7 @@
 version: '3'
 services:
   node-app:
-    image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:IMAGE_TAG'
+    image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:staging-latest'
     links:
       - 'redis'
     ports:
