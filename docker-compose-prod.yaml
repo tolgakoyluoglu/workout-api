@@ -2,7 +2,7 @@ version: '3.9'
 services:
   webapp:
     node-app:
-      image: 'x.dkr.ecr.eu-north-1.amazonaws.com/api:IMAGE_TAG'
+      image: '239272608624.dkr.ecr.eu-north-1.amazonaws.com/workout-api:IMAGE_TAG'
       memory: 512m
       links:
         - 'redis'
