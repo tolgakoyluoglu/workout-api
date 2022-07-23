@@ -22,18 +22,6 @@ app.use((req, res, next) => {
   next()
 })
 
-import { sequelize } from './config/sequelize'
-import User from './models/index'
-
-sequelize
-  .sync()
-  .then((result) => {
-    console.log('Init sequelize models.')
-  })
-  .catch((err) => {
-    console.log('Error with sequelize models:', err)
-  })
-
 import bodyParser from 'body-parser'
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }))
