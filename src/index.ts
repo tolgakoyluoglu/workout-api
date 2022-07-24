@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 })
 
 import { sequelize } from './config/sequelize'
-import User from './models/index'
+import { User, Workout, Exercise } from './models/index'
 
 sequelize
   .sync()
