@@ -6,6 +6,6 @@ router.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Health check OK' })
   console.log('Health check OK')
 })
-router.use('/users', users)
+// router.use('/users', users)
 
 export default router

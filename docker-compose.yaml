@@ -6,7 +6,7 @@ services:
       - 'redis'
     ports:
       - 80:80
-    mem_limit: 512m
+    mem_limit: 2GB
     env_file: .env
   redis:
     image: 'redis:alpine3.10'
