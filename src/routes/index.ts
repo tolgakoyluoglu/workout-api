@@ -3,7 +3,8 @@ import users from './users'
 import { Request, Response } from 'express'
 
 router.get('/', (req: Request, res: Response) => {
-  res.send('Api 200')
+  res.json({ message: 'Health check OK' })
+  console.log('Health check OK')
 })
 router.use('/users', users)
 
