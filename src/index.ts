@@ -53,7 +53,7 @@ if (NODE_ENV === 'development') {
   router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 }
 
-const PORT: number = parseInt(process.env.PORT as string) || 3000
+const PORT: number = parseInt(process.env.PORT as string) || 4000
 const HOST: string = process.env.HOST || '0.0.0.0'
 app.listen(PORT, HOST, () => {
   console.log('\x1b[36m%s\x1b[0m', `API URL: http://${HOST}:${PORT}`)
