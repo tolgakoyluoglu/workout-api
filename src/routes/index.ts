@@ -1,10 +1,17 @@
 const router = require('express').Router()
 import users from './users'
+import exercises from './exercises'
+import workouts from './workouts'
 import { Request, Response } from 'express'
 
+// Health check
 router.get('/', (req: Request, res: Response) => {
-  res.send('Api 200')
+  res.json({ message: 'Health check OK' })
+  console.log('Health check OK')
 })
-router.use('/users', users)
 
+// Routes
+router.use('/users', users)
+router.use('/exercises', exercises)
+router.use('/workouts', workouts)
 export default router
