@@ -6,7 +6,7 @@ services:
       - 'redis'
     ports:
       - 80:80
-    mem_limit: 2052m
+    mem_limit: 1GB
   redis:
     image: 'redis:alpine3.10'
     volumes:
