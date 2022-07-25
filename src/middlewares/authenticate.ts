@@ -6,7 +6,6 @@ async function authenticate(req: Request, res: Response, next: NextFunction) {
   try {
     const { token } = req.cookies
     if (token) req.me = await session.get(token)
-    if (!req.me) return res.status(UNAUTHORIZED.code).json(UNAUTHORIZED)
 
     next()
   } catch (error) {

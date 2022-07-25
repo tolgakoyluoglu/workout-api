@@ -270,12 +270,12 @@ class UserController {
 
       let user = await UserService.findOne({ email: googleUser.email })
       if (!user) {
-        const { googleId, email, firstname, lastname } = googleUser
+        const { id, email, given_name, family_name } = googleUser
         user = await User.create({
           email,
-          googleId,
-          firstname,
-          lastname,
+          googleId: id,
+          firstname: given_name,
+          lastname: family_name,
         })
       }
 
@@ -283,11 +283,11 @@ class UserController {
       const token = uuidv4()
 
       await session.set(token, sessionData)
-      res.cookie('auth_token', token, cookieConfig)
+      res.cookie('token', token, cookieConfig)
       const sessionTokens = [token].concat(user.sessions)
       await UserService.update({ id: user.id, sessions: sessionTokens })
 
-      res.redirect('http://localhost:3000')
+      res.redirect('http://localhost:5173')
     } catch (error) {
       internalServerError(req, res, error)
     }
