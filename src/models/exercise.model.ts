@@ -23,9 +23,12 @@ export const Exercise = sequelize.define<ExerciseModel>(
       allowNull: false,
     },
     description: {
+      type: Sequelize.TEXT,
+    },
+    musclePrimary: {
       type: Sequelize.STRING,
     },
-    muscles: {
+    musclesSecondary: {
       type: Sequelize.ARRAY(Sequelize.STRING),
     },
     images: {

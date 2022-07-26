@@ -1,14 +1,17 @@
 import { Exercise } from '../models'
-import { Op } from 'sequelize'
 
 class ExerciseService {
   static async find() {
     return await Exercise.findAll()
   }
 
-  static async findOne() {}
+  static async findOne(id: string) {
+    return await Exercise.findByPk(id)
+  }
 
-  static async create() {}
+  static async create(data: any) {
+    return await Exercise.create(data)
+  }
 
   static async update() {}
 
