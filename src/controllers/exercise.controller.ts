@@ -23,8 +23,13 @@ class ExerciseController {
     try {
       const { me } = req
       if (!me || !me.id) return res.status(UNAUTHORIZED.code).json(UNAUTHORIZED)
-      const exercises = await ExerciseService.find()
-      res.json(exercises)
+
+      const { page = 0 } = req.query
+      const size = 20
+      const exercises = await ExerciseService.find({ page, size })
+      let isEmpty = false
+      if (exercises.length === 0) isEmpty = true
+      res.json({ exercises, isEmpty })
     } catch (error) {
       internalServerError(req, res, error)
     }

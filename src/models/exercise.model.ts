@@ -25,17 +25,17 @@ export const Exercise = sequelize.define<ExerciseModel>(
     description: {
       type: Sequelize.TEXT,
     },
-    musclePrimary: {
+    bodyPart: {
       type: Sequelize.STRING,
     },
-    musclesSecondary: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
+    target: {
+      type: Sequelize.STRING,
     },
     images: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.STRING,
     },
     equipment: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
+      type: Sequelize.STRING,
     },
   },
   { timestamps: false },

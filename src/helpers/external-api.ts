@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ExerciseService } from '../services'
-const { WGER_API_KEY } = process.env
+const { WGER_API_KEY, RAPID_API_KEY } = process.env
 
 export const getExercisesWger = async () => {
   try {
@@ -26,8 +26,36 @@ export const getExercisesWger = async () => {
         }
       }
     }
-    const exercisess = await ExerciseService.find()
+    const exercisess = await ExerciseService.find(50, 50)
     return exercisess
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getRapid = async () => {
+  try {
+    const options = {
+      method: 'GET',
+      url: 'https://exercisedb.p.rapidapi.com/exercises',
+      headers: {
+        'X-RapidAPI-Key': RAPID_API_KEY || '',
+        'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+      },
+    }
+    const response = await axios.request(options)
+    console.log(response.data)
+    const result = response.data
+
+    for (const exercise of result) {
+      await ExerciseService.create({
+        name: exercise.name,
+        images: exercise.gifUrl,
+        equipment: exercise.equipment,
+        bodyPart: exercise.bodyPart,
+        target: exercise.target,
+      })
+    }
   } catch (error) {
     console.log(error)
   }
