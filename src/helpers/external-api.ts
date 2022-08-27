@@ -15,19 +15,15 @@ export const getExercisesWger = async () => {
         if (exercise.images.length > 0) {
           await ExerciseService.create({
             name: exercise.name,
-            muscle: {
-              name: exercise.muscles[0].name,
-              name_en: exercise.muscles[0].name_en,
-            },
-            musclesSecondary: exercise.muscles_secondary.map((eq: any) => eq.name_en),
+            bodyPart: exercise.muscles[0].name_en,
             equipment: exercise.equipment.map((eq: any) => eq.name),
-            images: exercise.images.map((element: any) => element.image),
+            image: exercise.images.map((element: any) => element.image),
           })
         }
       }
     }
-    const exercisess = await ExerciseService.find(50, 50)
-    return exercisess
+
+    return true
   } catch (error) {
     console.log(error)
   }
@@ -44,18 +40,18 @@ export const getRapid = async () => {
       },
     }
     const response = await axios.request(options)
-    console.log(response.data)
     const result = response.data
 
     for (const exercise of result) {
       await ExerciseService.create({
         name: exercise.name,
-        images: exercise.gifUrl,
+        image: exercise.gifUrl,
         equipment: exercise.equipment,
         bodyPart: exercise.bodyPart,
         target: exercise.target,
       })
     }
+    return true
   } catch (error) {
     console.log(error)
   }

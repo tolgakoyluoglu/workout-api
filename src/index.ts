@@ -23,7 +23,6 @@ app.use((req, res, next) => {
 })
 
 import { sequelize } from './config/sequelize'
-import { User, Workout, Exercise } from './models/index'
 
 sequelize
   .sync()
@@ -48,6 +47,7 @@ import router from './routes'
 app.use(router)
 
 import swaggerUi from 'swagger-ui-express'
+import { getRapid } from './helpers/external-api'
 if (NODE_ENV === 'development') {
   const swaggerDocument = require('./config/swagger/index')
   router.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -59,3 +59,5 @@ app.listen(PORT, HOST, () => {
   console.log('\x1b[36m%s\x1b[0m', `API URL: http://${HOST}:${PORT}`)
   console.log('\x1b[36m%s\x1b[0m', `Docs URL: http://${HOST}:${PORT}/docs`)
 })
+
+// getRapid()

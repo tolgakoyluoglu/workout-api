@@ -25,21 +25,12 @@ class ExerciseController {
       if (!me || !me.id) return res.status(UNAUTHORIZED.code).json(UNAUTHORIZED)
 
       const { page = 0 } = req.query
+      const { bodyPart } = req.params
       const size = 20
-      const exercises = await ExerciseService.find({ page, size })
+      const exercises = await ExerciseService.find({ page, size, bodyPart })
       let isEmpty = false
       if (exercises.length === 0) isEmpty = true
       res.json({ exercises, isEmpty })
-    } catch (error) {
-      internalServerError(req, res, error)
-    }
-  }
-
-  static async getByMusclegroup(req: Request, res: Response) {
-    try {
-      const { me } = req
-      if (!me || !me.id) return res.status(UNAUTHORIZED.code).json(UNAUTHORIZED)
-      res.json('get exercise by musclegroup')
     } catch (error) {
       internalServerError(req, res, error)
     }

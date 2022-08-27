@@ -1,5 +1,6 @@
 import * as Sequelize from 'sequelize'
 import { sequelize } from '../config/sequelize'
+import { Workout } from './workout.model'
 
 export interface ExerciseModel extends Sequelize.Model {
   id: any
@@ -10,33 +11,29 @@ export interface ExerciseModel extends Sequelize.Model {
   equipment: string[]
 }
 
-export const Exercise = sequelize.define<ExerciseModel>(
-  'exercise',
-  {
-    id: {
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4,
-      primaryKey: true,
-    },
-    name: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: Sequelize.TEXT,
-    },
-    bodyPart: {
-      type: Sequelize.STRING,
-    },
-    target: {
-      type: Sequelize.STRING,
-    },
-    images: {
-      type: Sequelize.STRING,
-    },
-    equipment: {
-      type: Sequelize.STRING,
-    },
+export const Exercise = sequelize.define<ExerciseModel>('exercise', {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
   },
-  { timestamps: false },
-)
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  description: {
+    type: Sequelize.TEXT,
+  },
+  bodyPart: {
+    type: Sequelize.STRING,
+  },
+  target: {
+    type: Sequelize.STRING,
+  },
+  image: {
+    type: Sequelize.STRING,
+  },
+  equipment: {
+    type: Sequelize.STRING,
+  },
+})

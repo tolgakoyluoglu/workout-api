@@ -11,35 +11,31 @@ export interface UserModel extends Sequelize.Model {
   sessions: string[]
 }
 
-export const User = sequelize.define<UserModel>(
-  'user',
-  {
-    id: {
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV4,
-      primaryKey: true,
-    },
-    email: {
-      type: Sequelize.STRING,
-      unique: true,
-      allowNull: false,
-    },
-    password: {
-      type: Sequelize.STRING,
-    },
-    googleId: {
-      type: Sequelize.STRING,
-      unique: true,
-    },
-    sessions: {
-      type: Sequelize.ARRAY(Sequelize.STRING),
-    },
-    firstname: {
-      type: Sequelize.STRING,
-    },
-    lastname: {
-      type: Sequelize.STRING,
-    },
+export const User = sequelize.define<UserModel>('user', {
+  id: {
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
   },
-  { timestamps: false },
-)
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+  },
+  password: {
+    type: Sequelize.STRING,
+  },
+  googleId: {
+    type: Sequelize.STRING,
+    unique: true,
+  },
+  sessions: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
+  firstname: {
+    type: Sequelize.STRING,
+  },
+  lastname: {
+    type: Sequelize.STRING,
+  },
+})
